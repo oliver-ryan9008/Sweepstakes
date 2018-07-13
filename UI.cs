@@ -6,24 +6,42 @@ using System.Threading.Tasks;
 
 namespace RyanSweepstakes
 {
-    public static class UserInterface
+    public static class UI
     {
 
-        public static void GetUserFirstName()
+        public static void GetUserFirstName(Contestant contestant)
         {
             Console.WriteLine("Please enter your first name.");
-            string userFirstName = Console.ReadLine().ToString();
+            contestant.firstName = Console.ReadLine().ToString();
+            Console.WriteLine("You have entered " + contestant.firstName + ". Is that correct? Enter yes or no.");
+            string answer = Console.ReadLine().ToString().ToLower();
+            if(answer != "yes")
+            {
+                GetUserFirstName(contestant);
+            }
         }
 
-        public static void GetUserLastName()
+        public static void GetUserLastName(Contestant contestant)
         {
             Console.WriteLine("Please enter your last name.");
-            string userLastName = Console.ReadLine().ToString();
+            contestant.lastName = Console.ReadLine().ToString();
+            Console.WriteLine("You have entered " + contestant.lastName + ". Is that correct? Enter yes or no.");
+            string answer = Console.ReadLine().ToString().ToLower();
+            if (answer != "yes")
+            {
+                GetUserLastName(contestant);
+            }
         }
-        public static void GetUserEmailAddress()
+        public static void GetUserEmailAddress(Contestant contestant)
         {
             Console.WriteLine("Please enter your email address.");
-            string userEmailAddress = Console.ReadLine().ToString();
+            contestant.emailAddress = Console.ReadLine().ToString();
+            Console.WriteLine("You have entered " + contestant.emailAddress + ". Is that correct? Enter yes or no.");
+            string answer = Console.ReadLine().ToString().ToLower();
+            if (answer != "yes")
+            {
+                GetUserEmailAddress(contestant);
+            }
         }
     }
 }

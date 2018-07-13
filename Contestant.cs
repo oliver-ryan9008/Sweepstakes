@@ -9,10 +9,10 @@ namespace RyanSweepstakes
     public class Contestant
     {
 
-        public string firstName;
-        public string lastName;
-        public string emailAddress;
-        public int registrationNumber;
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string emailAddress { get; set; }
+        public int registrationNumber { get; set; }
 
         public Contestant()
         {
