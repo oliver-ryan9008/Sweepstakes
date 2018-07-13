@@ -10,13 +10,20 @@ namespace RyanSweepstakes
 
     class SweepstakesQueueManager : ISweepstakesManager
     {
+        Queue<Sweepstakes> sweepstakesQueue;
+
+        public SweepstakesQueueManager()
+        {
+            sweepstakesQueue = new Queue<Sweepstakes>();
+        }
         public Sweepstakes GetSweepstakes()
         {
-            return GetSweepstakes();   //need to fix this... just getting rid of errors.
+            return sweepstakesQueue.Dequeue();   //need to fix this... just getting rid of errors.
         }
 
         public void InsertSweepstakes(Sweepstakes sweepstakes)
         {
+            sweepstakesQueue.Enqueue(sweepstakes);
         }
     }
 }
