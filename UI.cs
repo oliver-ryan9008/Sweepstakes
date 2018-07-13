@@ -13,35 +13,41 @@ namespace RyanSweepstakes
         {
             Console.WriteLine("Please enter your first name.");
             contestant.firstName = Console.ReadLine().ToString();
-            Console.WriteLine("You have entered " + contestant.firstName + ". Is that correct? Enter yes or no.");
-            string answer = Console.ReadLine().ToString().ToLower();
-            if(answer != "yes")
-            {
-                GetUserFirstName(contestant);
-            }
         }
 
         public static void GetUserLastName(Contestant contestant)
         {
+            Console.Clear();
             Console.WriteLine("Please enter your last name.");
             contestant.lastName = Console.ReadLine().ToString();
-            Console.WriteLine("You have entered " + contestant.lastName + ". Is that correct? Enter yes or no.");
-            string answer = Console.ReadLine().ToString().ToLower();
-            if (answer != "yes")
-            {
-                GetUserLastName(contestant);
-            }
         }
         public static void GetUserEmailAddress(Contestant contestant)
         {
+            Console.Clear();
             Console.WriteLine("Please enter your email address.");
             contestant.emailAddress = Console.ReadLine().ToString();
-            Console.WriteLine("You have entered " + contestant.emailAddress + ". Is that correct? Enter yes or no.");
+        }
+
+        public static void DisplayWinner(Contestant contestant)
+        {
+            Console.Clear();
+            Console.WriteLine(contestant.firstName + " " + contestant.lastName + " at email address " + contestant.emailAddress + " is the winner!");
+            Console.ReadKey();
+        }
+
+        public static void CheckAnswers(Contestant contestant)
+        {
+            Console.WriteLine("You have entered \n" + contestant.firstName + "\n" + contestant.lastName + "\n" + contestant.emailAddress + "\n" + "Is that correct? Enter yes or no.");
             string answer = Console.ReadLine().ToString().ToLower();
             if (answer != "yes")
             {
+                Console.Clear();
+                GetUserFirstName(contestant);
+                GetUserLastName(contestant);
                 GetUserEmailAddress(contestant);
             }
         }
+
+
     }
 }

@@ -8,12 +8,12 @@ namespace RyanSweepstakes
 {
     class Sweepstakes
     {
-        public int winner;
-        Dictionary<int, Contestant> dictionary = new Dictionary<int, Contestant>();
         
+        Dictionary<int, Contestant> dictionary = new Dictionary<int, Contestant>();
+
 
         public int registrationNumber { get; set; }
-        public Sweepstakes(string name)
+        public Sweepstakes()
         {
             registrationNumber = 1;
         }
@@ -25,20 +25,38 @@ namespace RyanSweepstakes
             UI.GetUserFirstName(contestant);
             UI.GetUserLastName(contestant);
             UI.GetUserEmailAddress(contestant);
+            UI.CheckAnswers(contestant);
             dictionary.Add(registrationNumber, contestant);
             registrationNumber++;
+            CheckForMoreContestants(contestant);
         }
 
-        //public int PickWinner()
-        //{
-        //    Random random = new Random();
-        //    public int winner = random.Next(1, ContestantDictionary.Count);
-        //    return winner;
-        //}
+        public int PickWinner()
+        {
+            Random random = new Random();
+            int winner = random.Next(1, dictionary.Count);
+            if(dictionary.ContainsKey(winner))
+            {
+                Contestant contestant = dictionary[winner];                
+                UI.DisplayWinner(contestant);
+            }
+            return winner;
+        }  
+        
 
         public void PrintContestantInfo(Contestant contestant)
-        {
+            {
 
+            }
+
+        public void CheckForMoreContestants(Contestant contestant)
+        {
+            Console.WriteLine("Are there any more contestants to register? Enter yes or no.");
+            string addContestant = Console.ReadLine().ToString().ToLower();
+            if (addContestant == "yes")
+            {
+                RegisterContestant();
+            }
         }
     }
 }
